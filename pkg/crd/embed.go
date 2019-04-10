@@ -70,6 +70,9 @@ func embedDefinitionMap(defs map[string]v1beta1.JSONSchemaProps, refs map[string
 		embedDefinition(&def, refs)
 		newDefs[i] = def
 	}
+	if len(newDefs) == 0 {
+		return nil
+	}
 	return newDefs
 }
 
@@ -79,6 +82,9 @@ func embedDefinitionArray(defs []v1beta1.JSONSchemaProps, refs map[string]v1beta
 		def := defs[i]
 		embedDefinition(&def, refs)
 		newDefs[i] = def
+	}
+	if len(newDefs) == 0 {
+		return nil
 	}
 	return newDefs
 }
